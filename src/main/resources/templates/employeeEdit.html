@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <link rel="stylesheet" th:href="@{/css/edit.css}"/>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${employee.id} ? 'Edit employee' : 'Add employee'"></h1>
+    <form th:action="${employee.id} ? @{/employee/edit/{id}(id=${employee.id})} : @{/employee/add}" th:object="${employee}" method="post">
+        <div>
+            <label>Employee Id</label>
+            <input type="text" th:field="*{empId}">
+            <div th:if="${#fields.hasErrors('empId')}">
+                <span class="error" th:each="error : ${#fields.errors('empId')}" th:text="${error}">Error</span>
+            </div>
+        </div>
+        <div>
+            <label>Project Id</label>
+            <textarea th:field="*{projectId}"></textarea>
+        </div>
+        <div>
+            <label>Start Date</label>
+            <textarea th:field="*{startDate}"></textarea>
+        </div>
+        <div>
+            <label>End Date</label>
+            <textarea th:field="*{endDate}"></textarea>
+        </div>
+        <div class="button-container">
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+            <div>
+                <a class="button" th:href="@{/}">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
