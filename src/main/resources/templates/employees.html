@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee statistic</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="logo">Employee statistic</a>
+        <ul class="left">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/employee/add}">Add employee</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1>Employees</h1>
+    <div>
+        <a href="/employee/add">Add employee</a>
+    </div>
+    <div class="employee-container">
+        <div th:each="employee : ${employees}" class="employee-card">
+            <h2 th:text="'Employee Id:' + ${employee.empId}">Employee Id</h2>
+            <h4 th:text="'Project id' + ${employee.projectId}"></h4>
+            <div class="employee-actions">
+                <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a>
+                <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete</a>
+                <a th:href="@{/employee/{id}(id=${employee.id})}">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
