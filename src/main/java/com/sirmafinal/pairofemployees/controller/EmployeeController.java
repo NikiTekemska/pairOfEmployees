@@ -20,7 +20,6 @@ public class EmployeeController {
     public String listEmployees(Model model){
         List<Employee> employees = employeeService.findAll();
         model.addAttribute("employees", employees);
-        System.out.println("employees size"+employees.size());
         return  "employees";
     }
 
@@ -33,12 +32,9 @@ public class EmployeeController {
     @PostMapping("/employee/add")
     @Validated
     public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model, HttpServletRequest request){
-        System.out.println("Request Parameters: " + request.getParameterMap());
         if(result.hasErrors()){
-            System.out.println("record id" + employee.getId());
             return "employeeEdit";
         }
-
         employeeService.save(employee);
         return "redirect:/";
     }
@@ -68,13 +64,6 @@ public class EmployeeController {
     public String deleteEmployee(@PathVariable int id){
         employeeService.delete(id);
         return "redirect:/";
-    }
-
-    @GetMapping("/displayResults")
-    public String displayResults(Model model) {
-        model.addAttribute("commonProjects", employeeService.winnerCommonProjects());
-        model.addAttribute("winnerPair", employeeService.getWinnerPair());
-        return "winnerPair";
     }
 
 }
