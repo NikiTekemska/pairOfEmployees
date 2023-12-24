@@ -23,8 +23,8 @@ public class CSVReader implements DataReader {
                 int empId = Integer.parseInt(data[0]);
                 int projectId = Integer.parseInt(data[1]);
 
-                LocalDate dateFrom = LocalDate.parse(data[2]);//parseDate(data[2]);
-                LocalDate dateTo = (data[3].equalsIgnoreCase("NULL")) ? LocalDate.now() : LocalDate.parse(data[3]); //parseDate(data[3]);
+                LocalDate dateFrom = DateParser.parseDate(data[2]);
+                LocalDate dateTo = (data[3].equalsIgnoreCase("NULL")) ? LocalDate.now() : DateParser.parseDate(data[3]); //parseDate(data[3]);
 
                 employees.add(new Employee(empId, projectId, dateFrom, dateTo));
             }
