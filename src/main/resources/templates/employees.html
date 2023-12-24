@@ -13,6 +13,7 @@
         <ul class="left">
             <li><a th:href="@{/}">Home</a></li>
             <li><a th:href="@{/employee/add}">Add employee</a></li>
+            <li><a th:href="@{/displayResults}">Show winner</a></li>
         </ul>
     </div>
 </nav>
@@ -28,7 +29,7 @@
             <div class="employee-actions">
                 <a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a>
                 <a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete</a>
-<!--                <a th:href="@{/employee/{id}(id=${employee.id})}">Details</a>-->
+
             </div>
         </div>
     </div>
