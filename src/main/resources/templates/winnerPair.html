@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee statistic</title>
+    <link rel="stylesheet" th:href="@{/css/winnerPair.css}"/>
+</head>
+<body>
+    <h1>Winner Pair</h1>
+    <p th:text="'Employee ID: ' + ${winnerPair.emp1ID} + ' '+'Employee ID: ' + ${winnerPair.emp2ID} + ' ' + 'Duration: ' + ${winnerPair.duration}"></p>
+
+<h1>Common Projects</h1>
+<table>
+    <tr>
+        <th>Project ID</th>
+        <th>Duration</th>
+    </tr>
+    <tr th:each="project : ${commonProjects}">
+        <td th:text="${project.projectId}"></td>
+        <td th:text="${project.duration}"></td>
+    </tr>
+</table>
+</body>
+</html>
