@@ -66,7 +66,7 @@ public class EmployeeService {
                 for (Employee employeeDB : employeesDB) {
                     if (employee.getEmpId() == employeeDB.getEmpId()
                             && employee.getProjectId() == employeeDB.getProjectId()
-                            && employee.getStartDate().equals(employeeDB.getStartDate()) // Use equals for LocalDate
+                            && employee.getStartDate().equals(employeeDB.getStartDate())
                             && employee.getEndDate().equals(employeeDB.getEndDate())) {
                         foundDuplicate = true;
                         break;
